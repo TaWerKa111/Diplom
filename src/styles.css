@@ -798,6 +798,52 @@ dd {
     color: var(--clay);
 }
 
+.support-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.support-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 250px;
+    border: 1px solid var(--subtle);
+    border-radius: var(--radius);
+    background: #fbfdfc;
+    padding: 16px;
+    animation: riseIn 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--delay, 0ms);
+    transition:
+        transform 220ms ease,
+        box-shadow 220ms ease,
+        border-color 220ms ease;
+}
+
+.support-card:hover {
+    border-color: rgba(45, 111, 104, 0.28);
+    box-shadow: 0 18px 42px rgba(25, 54, 50, 0.1);
+    transform: translateY(-4px);
+}
+
+.support-icon {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    margin-bottom: 14px;
+    border-radius: var(--radius);
+    background: var(--primary-soft);
+    color: var(--primary-strong);
+}
+
+.support-card p {
+    margin: 10px 0 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
 .criteria-table {
     display: grid;
     gap: 0;
@@ -920,7 +966,8 @@ dd {
     }
 
     .indicator-grid,
-    .timeline {
+    .timeline,
+    .support-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
@@ -999,7 +1046,8 @@ dd {
 
     .exercise-grid,
     .indicator-grid,
-    .timeline {
+    .timeline,
+    .support-grid {
         grid-template-columns: 1fr;
     }
 
