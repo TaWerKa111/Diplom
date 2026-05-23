@@ -63,6 +63,10 @@ body {
         var(--bg);
 }
 
+body.modal-open {
+    overflow: hidden;
+}
+
 button,
 input {
     font: inherit;
@@ -626,6 +630,250 @@ dd {
     font-weight: 650;
 }
 
+.scenario-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: fit-content;
+    margin-top: 2px;
+    border: 1px solid rgba(45, 111, 104, 0.24);
+    border-radius: var(--radius);
+    background: var(--primary);
+    color: #fff;
+    padding: 9px 12px;
+    font-size: 0.9rem;
+    font-weight: 760;
+    transition:
+        background 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.scenario-button:hover {
+    border-color: rgba(31, 91, 85, 0.48);
+    background: var(--primary-strong);
+    box-shadow: 0 10px 24px rgba(31, 91, 85, 0.18);
+}
+
+.training-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: grid;
+    place-items: center;
+    background: rgba(24, 39, 36, 0.46);
+    padding: 24px;
+    backdrop-filter: blur(6px);
+}
+
+.training-modal {
+    display: flex;
+    flex-direction: column;
+    width: min(1040px, 100%);
+    max-height: min(88dvh, 920px);
+    overflow: hidden;
+    border: 1px solid rgba(210, 222, 217, 0.92);
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: 0 28px 80px rgba(25, 54, 50, 0.24);
+    animation: modalIn 180ms ease-out both;
+}
+
+.training-modal-header,
+.training-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex: 0 0 auto;
+}
+
+.training-modal-header {
+    border-bottom: 1px solid var(--subtle);
+    padding: 20px 22px 16px;
+}
+
+.training-modal-header h2 {
+    margin: 4px 0 0;
+    font-size: clamp(1.35rem, 2vw, 2rem);
+}
+
+.icon-button {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--subtle-strong);
+    border-radius: var(--radius);
+    background: #fff;
+    color: var(--text);
+    transition:
+        background 180ms ease,
+        border-color 180ms ease,
+        color 180ms ease;
+}
+
+.icon-button:hover {
+    border-color: rgba(45, 111, 104, 0.34);
+    background: var(--primary-soft);
+    color: var(--primary-strong);
+}
+
+.modal-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px 22px 0;
+}
+
+.modal-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--subtle);
+    border-radius: var(--radius);
+    background: #fbfdfc;
+    color: #354542;
+    padding: 7px 10px;
+    font-size: 0.88rem;
+    font-weight: 700;
+}
+
+.modal-methods {
+    margin: 14px 22px 0;
+    border-left: 4px solid var(--clay);
+    border-radius: var(--radius);
+    background: #fbf7f5;
+    padding: 12px 14px;
+}
+
+.modal-methods strong,
+.modal-section h3,
+.scenario-timeline strong {
+    color: var(--text);
+}
+
+.modal-methods p,
+.modal-section p,
+.scenario-timeline p {
+    margin: 4px 0 0;
+    color: var(--muted);
+}
+
+.modal-body {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    min-height: 0;
+    margin-top: 16px;
+    overflow-y: auto;
+    padding: 0 22px 22px;
+}
+
+.modal-section {
+    min-width: 0;
+    border-top: 1px solid var(--subtle);
+    padding-top: 14px;
+}
+
+.modal-section-wide {
+    grid-column: 1 / -1;
+}
+
+.modal-section h3 {
+    margin: 0 0 9px;
+    font-size: 1rem;
+}
+
+.modal-section ul,
+.scenario-timeline {
+    display: grid;
+    gap: 9px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.modal-section li {
+    position: relative;
+    padding-left: 16px;
+    color: #33433f;
+    font-size: 0.94rem;
+}
+
+.modal-section li::before {
+    position: absolute;
+    top: 0.72em;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--clay);
+    content: "";
+}
+
+.scenario-timeline li {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 12px;
+    align-items: start;
+    border: 1px solid var(--subtle);
+    border-radius: var(--radius);
+    background: #fbfdfc;
+    padding: 12px;
+}
+
+.scenario-timeline li > span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    border-radius: var(--radius);
+    background: var(--primary-soft);
+    color: var(--primary-strong);
+    font-size: 0.82rem;
+    font-weight: 780;
+    white-space: nowrap;
+}
+
+.training-modal-footer {
+    border-top: 1px solid var(--subtle);
+    padding: 14px 22px;
+}
+
+.training-modal-footer > span {
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.modal-nav-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 40px;
+    border: 1px solid var(--subtle-strong);
+    border-radius: var(--radius);
+    background: #fff;
+    color: var(--primary-strong);
+    padding: 8px 12px;
+    font-size: 0.92rem;
+    font-weight: 760;
+    transition:
+        background 180ms ease,
+        border-color 180ms ease,
+        color 180ms ease;
+}
+
+.modal-nav-button:hover {
+    border-color: rgba(45, 111, 104, 0.34);
+    background: var(--primary-soft);
+    color: var(--primary-strong);
+}
+
 .constructor-panel {
     position: sticky;
     top: 18px;
@@ -1091,6 +1339,20 @@ dd {
     .exercise-card {
         min-height: auto;
     }
+
+    .training-modal-overlay {
+        align-items: end;
+        padding: 10px;
+    }
+
+    .training-modal {
+        width: 100%;
+        max-height: calc(100dvh - 20px);
+    }
+
+    .modal-body {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 560px) {
@@ -1119,7 +1381,8 @@ dd {
     .hero-actions > button,
     .filter-row button,
     .segmented button,
-    .model-tabs button {
+    .model-tabs button,
+    .scenario-button {
         width: 100%;
         justify-content: center;
     }
@@ -1137,12 +1400,50 @@ dd {
 
     dl div,
     .plan-list li,
-    .timeline article {
+    .timeline article,
+    .scenario-timeline li {
         grid-template-columns: 1fr;
     }
 
     .checklist label {
         grid-template-columns: 20px 20px 1fr;
+    }
+
+    .training-modal-header,
+    .training-modal-footer {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .training-modal-header,
+    .modal-meta,
+    .modal-methods,
+    .modal-body,
+    .training-modal-footer {
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    .modal-methods {
+        margin-right: 16px;
+        margin-left: 16px;
+    }
+
+    .icon-button,
+    .modal-nav-button {
+        width: 100%;
+    }
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
